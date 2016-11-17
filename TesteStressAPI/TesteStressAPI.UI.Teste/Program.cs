@@ -9,10 +9,13 @@ namespace TesteStressAPI.UI.Teste
     public class Program
     {
         private static string _url;
+        private static string _servico;
         public static void Main()
         {
             Console.WriteLine("Informe URL");
             _url = Console.ReadLine();
+            Console.WriteLine("Informe serviço");
+            _servico = Console.ReadLine();            
             Console.WriteLine("Quantidade Thread");
             var n = Convert.ToInt32(Console.ReadLine());
             var parent = Task.Run(() =>
@@ -66,9 +69,8 @@ namespace TesteStressAPI.UI.Teste
                     // Display the process statistics until// the user closes the program.do 
                     {
                         // Start the process.
-                        var test = Process.GetProcessesByName("w3wp");
-                        //var test = Process.GetProcessesByName("iisexpress");
-                        //var test = Process.GetProcessesByName("node");
+                        var test = Process.GetProcessesByName(_servico);
+                        
                         myProcess = test.First();
 
                         if (!myProcess.HasExited)
